@@ -27,5 +27,5 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: CSMS
-        path: std/target/CSMS.war
+        path: CSMS/target/CSMS.war
 
