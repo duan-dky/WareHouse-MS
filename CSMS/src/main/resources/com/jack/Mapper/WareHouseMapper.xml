@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.Mapper.WareHouseMapper">
+
+    <insert id="addStorage">
+        insert into wh_table values(#{whcode},#{whname},#{address},#{snum},#{mnum},#{bnum})
+    </insert>
+    <insert id="addShelves">
+        insert into sh_table values(#{scode},#{stype},#{snum})
+    </insert>
+    <update id="updateStorage">
+        update wh_table
+        set
+            whcode = #{param1.whcode},
+            whname = #{param1.whname},
+            address = #{param1.address},
+            snum = #{param1.snum},
+            mnum = #{param1.mnum},
+            bnum = #{param1.bnum}
+        where
+            whcode = #{param2}
+    </update>
+    <update id="updateShelves">
+        update sh_table
+        set
+            scode = #{param1.scode},
+            stype = #{param1.stype},
+            snum = #{param1.snum}
+        where
+            scode = #{param2}
+    </update>
+    <delete id="deleteStorage">
+        delete from wh_table where whcode = #{whcode}
+    </delete>
+    <delete id="deleteShelves">
+        delete from sh_table where scode = #{scode}
+    </delete>
+    <select id="select" resultType="com.jack.Pojo.Storage">
+        select * from wh_table where whcode = #{whcode}
+    </select>
+    <select id="selectAll" resultType="com.jack.Pojo.Storage">
+        select * from wh_table
+    </select>
+    <select id="selectByScode" resultType="com.jack.Pojo.Shelves">
+        select * from sh_table where scode = #{scode}
+    </select>
+    <select id="selectALl" resultType="com.jack.Pojo.Shelves">
+        select * from sh_table
+    </select>
+</mapper>

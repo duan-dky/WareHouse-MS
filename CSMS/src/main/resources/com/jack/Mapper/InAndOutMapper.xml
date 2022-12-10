@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.Mapper.InAndOutMapper">
+
+    <insert id="InStorage">
+        insert into in_table values(#{icode},#{pcode},#{num},#{itime},#{rcode},#{stype},#{ucode})
+    </insert>
+
+    <insert id="OutStorage">
+        insert into out_table values(#{ocode},#{pcode},#{rcode},#{num},#{otime},#{ucode})
+    </insert>
+    <insert id="add">
+        insert into pa_po_table values (#{pcode},#{rcode},#{scode},#{stype},#{num})
+    </insert>
+
+    <delete id="sub">
+        delete from pa_po_table
+        where
+            pcode = #{pcode} and
+            rcode = #{rcode} and
+            scode = #{scode} and
+            num = #{num}
+    </delete>
+    <delete id="deleteInOrder">
+        delete from in_table
+        where icode=#{id}
+    </delete>
+    <delete id="deleteOutOrder">
+        delete from out_table
+        where ocode=#{id}
+    </delete>
+
+    <update id="update">
+        update pa_po_table
+        set
+            pcode = #{param1.pcode},
+            rcode = #{param1.rcode},
+            scode = #{param1.scode},
+            num = #{param1.num},
+            stype = #{param1.stype}
+        where
+            pcode = #{param2.pcode} and
+            rcode = #{param2.rcode} and
+            scode = #{param2.scode} and
+            stype = #{param2.stype}
+
+    </update>
+    <select id="selectByType" resultType="com.jack.Pojo.Shelves">
+        select * from sh_table where stype = #{stype}
+    </select>
+    <select id="selectByStyRco" resultType="com.jack.Pojo.Part_Pos">
+        select * from pa_po_table where stype = #{param1} and rcode = #{param2}
+    </select>
+    <select id="selectByPcoRco" resultType="com.jack.Pojo.Part_Pos">
+        select * from pa_po_table where pcode = #{param1} and rcode = #{param2}
+    </select>
+    <select id="selectByRco" resultType="com.jack.Pojo.Part_Pos">
+        select * from pa_po_table where rcode = #{rcode}
+    </select>
+    <select id="selectByScode" resultType="com.jack.Pojo.Part_Pos">
+        select * from pa_po_table where scode = #{scode}
+    </select>
+    <select id="selectByPcode" resultType="com.jack.Pojo.Part_Pos">
+        select * from pa_po_table where pcode = #{pcode}
+    </select>
+    <select id="selectAll" resultType="com.jack.Pojo.Part_Pos">
+        select * from pa_po_table
+    </select>
+    <select id="selectAllInOrder" resultType="com.jack.Pojo.InOrder">
+        select * from in_table
+    </select>
+    <select id="selectAllOutOrder" resultType="com.jack.Pojo.OutOrder">
+        select * from out_table
+    </select>
+</mapper>

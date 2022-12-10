@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.Mapper.LoginMapper">
+    <insert id="addUser">
+        insert into id_table values(#{id},#{passwd},#{email},#{idtype})
+    </insert>
+    <update id="updateById">
+        update id_table
+        set
+            id = #{param1.id},
+            passwd = #{param1.passwd},
+            email = #{param1.email},
+            idtype = #{param1.idtype}
+        where
+            id = #{param2}
+    </update>
+    <delete id="deleteById">
+        delete from id_table where id = #{id}
+    </delete>
+
+    <select id="findUser" resultType="com.jack.Pojo.LoginUser">
+        select * from id_table where id = #{id}
+    </select>
+    <select id="selectAll" resultType="com.jack.Pojo.LoginUser">
+        select * from id_table
+    </select>
+</mapper>

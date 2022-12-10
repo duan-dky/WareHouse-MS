@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.Mapper.UserMapper">
+
+    <insert id="add">
+        insert into user_table values(#{ucode},#{rcode},#{uname},#{phone})
+    </insert>
+    <update id="updateByUcode">
+        update user_table
+        set
+            ucode = #{param1.ucode},
+            rcode = #{param1.rcode},
+            uname = #{param1.uname},
+            phone = #{param1.phone}
+        where
+            ucode = #{param2}
+    </update>
+    <delete id="deleteByUcode">
+        delete from user_table where ucode = #{ucode}
+    </delete>
+    <select id="selectByUcode" resultType="com.jack.Pojo.User">
+        select * from user_table where ucode = #{ucode}
+    </select>
+    <select id="selectAll" resultType="com.jack.Pojo.User">
+        select * from user_table
+    </select>
+</mapper>

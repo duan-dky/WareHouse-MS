@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.Mapper.PartMapper">
+
+    <insert id="add">
+        insert into part_table values(#{pcode},#{pname},#{ptype},#{manufacture},#{protime},#{Warrantytime},#{info},#{size})
+    </insert>
+    <update id="update">
+        update part_table
+        set
+            pcode = #{param1.pcode},
+            pname = #{param1.pname},
+            ptype = #{param1.ptype},
+            manufacture = #{param1.manufacture},
+            protime = #{param1.protime},
+            Warrantytime = #{param1.Warrantytime},
+            info = #{param1.info},
+            size = #{param1.size}
+        where
+            pcode = #{param2}
+    </update>
+    <delete id="delete">
+        delete from part_table where pcode = #{pcode}
+    </delete>
+    <select id="select" resultType="com.jack.Pojo.Part">
+        select * from part_table where pcode = #{pcode}
+    </select>
+
+    <select id="selectByPtype" resultType="com.jack.Pojo.Part">
+        select * from part_table where ptype = #{ptype}
+    </select>
+    <select id="selectAll" resultType="com.jack.Pojo.Part">
+        select * from part_table
+    </select>
+</mapper>
