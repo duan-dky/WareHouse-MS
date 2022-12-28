@@ -9,7 +9,7 @@
   </welcome-file-list>
   <error-page>
 	  <error-code>500</error-code>
-	  <location>../pages/login.html</location>
+	  <location>/pages/login.html</location>
   </error-page>
 <!--  <filter>-->
 <!--    <filter-name>LoginFilter</filter-name>-->
