@@ -3,14 +3,6 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <welcome-file-list>
-    <welcome-file>../pages/login.html</welcome-file>
-  </welcome-file-list>
-  <error-page>
-	  <error-code>500</error-code>
-	  <location>/pages/login.html</location>
-  </error-page>
 <!--  <filter>-->
 <!--    <filter-name>LoginFilter</filter-name>-->
 <!--    <filter-class>com.jack.filter.LoginFilter</filter-class>-->
